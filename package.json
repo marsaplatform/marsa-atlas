@@ -1,0 +1,32 @@
+{
+  "name": "@marsaplatform/atlas",
+  "version": "0.1.0",
+  "description": "Source-grounded migration services, evidence, and referral infrastructure for Egypt.",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "engines": { "bun": ">=1.2.0" },
+  "bin": { "marsa-atlas": "dist/cli.js" },
+  "files": ["dist", "data", "README.md", "LICENSE"],
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "dev:http": "bun run src/cli.ts --http",
+    "build": "bun build src/cli.ts --outdir dist --target bun --sourcemap",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "check": "bun run typecheck && bun test && bun run build",
+    "start": "bun run dist/cli.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "zod": "4.3.5"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "5.9.3"
+  },
+  "repository": { "type": "git", "url": "git+https://github.com/marsaplatform/marsa-atlas.git" },
+  "homepage": "https://atlas.marsaplatform.com",
+  "bugs": { "url": "https://github.com/marsaplatform/marsa-atlas/issues" },
+  "keywords": ["mcp", "egypt", "migration", "refugees", "humanitarian", "arabic", "open-data"]
+}

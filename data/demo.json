@@ -1,0 +1,49 @@
+[
+  {
+    "id": "service-education-1",
+    "type": "service",
+    "title": "برامج التعليم الأساسي وتعليم الكبار",
+    "summary": "خدمات تعليمية في القاهرة للاجئين والمهاجرين مع ضرورة التواصل لتأكيد شروط القبول الحالية.",
+    "countryCode": "EG",
+    "language": "ar",
+    "source": { "name": "Marsa Service Directory", "url": "https://marsaplatform.com/services/", "publisher": "Marsa Egypt", "retrievedAt": "2026-08-14T00:00:00Z" },
+    "lastVerified": "2026-08-13",
+    "recordStatus": "source_backed",
+    "coverageNotes": ["الأهلية النهائية تحددها الجهة المقدمة للخدمة."],
+    "tags": ["تعليم", "القاهرة", "تعليم الكبار"],
+    "organizationId": "org-stars",
+    "serviceTypes": ["تعليم"],
+    "governorates": ["القاهرة"],
+    "eligibility": ["لاجئون", "مهاجرون", "سودانيون"],
+    "requirements": ["التواصل المسبق", "مستند هوية متاح إن وجد"],
+    "contact": { "url": "https://marsaplatform.com/network/" }
+  },
+  {
+    "id": "legal-education-1",
+    "type": "legal",
+    "title": "حق الطفل في التعليم الأساسي في مصر",
+    "summary": "مدخل بحثي للمصدر القانوني المتعلق بحق الطفل في التعليم الأساسي داخل مصر.",
+    "countryCode": "EG",
+    "language": "ar",
+    "source": { "name": "المصدر القانوني المنشور في مرسى", "url": "https://marsaplatform.com/legal/", "publisher": "Marsa Egypt", "retrievedAt": "2026-08-14T00:00:00Z" },
+    "lastVerified": "2026-08-13",
+    "recordStatus": "source_backed",
+    "coverageNotes": ["هذا الملخص ليس استشارة قانونية.", "يجب الرجوع إلى النص الرسمي الكامل."],
+    "tags": ["تعليم", "أطفال", "مصر"],
+    "legalTopics": ["التعليم"],
+    "instrument": "دستور وتشريعات التعليم"
+  },
+  {
+    "id": "org-stars",
+    "type": "organization",
+    "title": "ساينت آندروز لخدمات اللاجئين — StARS",
+    "summary": "جهة مدرجة في شبكة مرسى وتقدم خدمات من بينها برامج تعليمية.",
+    "countryCode": "EG",
+    "language": "ar",
+    "source": { "name": "Marsa Network", "url": "https://marsaplatform.com/network/", "publisher": "Marsa Egypt", "retrievedAt": "2026-08-14T00:00:00Z" },
+    "lastVerified": "2026-08-13",
+    "recordStatus": "source_backed",
+    "coverageNotes": ["راجع صفحة الجهة للتواصل والخدمات الحالية."],
+    "tags": ["تعليم", "القاهرة", "منظمة", "مصر"]
+  }
+]

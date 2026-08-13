@@ -1,0 +1,10 @@
+services:
+  atlas:
+    build: .
+    restart: unless-stopped
+    environment:
+      ATLAS_PORT: 3000
+      ATLAS_DATA_MODE: ${ATLAS_DATA_MODE:-wordpress}
+      ATLAS_WORDPRESS_URL: ${ATLAS_WORDPRESS_URL:-https://marsaplatform.com}
+    ports:
+      - "3000:3000"

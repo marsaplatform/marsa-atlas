@@ -32,4 +32,19 @@ describe("WordPressRepository", () => {
     const repository = new WordPressRepository("https://marsaplatform.com", fetcher);
     expect(repository.coverage()).rejects.toThrow();
   });
+
+  test("falls back to meaningful Arabic tokens when a natural-language phrase has no exact matches", async () => {
+    const requested: string[] = [];
+    const fetcher = async (input: string | URL | Request) => {
+      const url = new URL(input instanceof Request ? input.url : input.toString());
+      requested.push(url.searchParams.get("q") ?? "");
+      const body = requested.length === 1 ? { items: [], total: 0, pages: 0 } : payload;
+      return new Response(JSON.stringify(body));
+    };
+    const repository = new WordPressRepository("https://marsaplatform.com", fetcher);
+    const results = await repository.search({ query: "دعم نفسي القاهرة", types: [], limit: 5 });
+    expect(results).toHaveLength(1);
+    expect(requested).toContain("دعم");
+    expect(results[0]?.title).toBe("دعم نفسي");
+  });
 });

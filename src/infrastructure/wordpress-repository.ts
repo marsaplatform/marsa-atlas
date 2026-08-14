@@ -93,8 +93,15 @@ export class WordPressRepository implements AtlasRepository {
   }
 
   async search(input: Parameters<AtlasRepository["search"]>[0]): Promise<AnyAtlasRecord[]> {
-    const data = await this.request("search", { q: input.query, per_page: Math.min(input.limit * 3, 100) });
-    return data.items.map(mapItem).filter((item) => input.types.length === 0 || input.types.includes(item.type)).slice(0, input.limit);
+    const perPage = Math.min(input.limit * 3, 100);
+    const data = await this.request("search", { q: input.query, per_page: perPage });
+    let items = data.items;
+    if (items.length === 0) {
+      const tokens = [...new Set(input.query.normalize("NFKC").split(/\s+/).map((token) => token.replace(/[؟?،,.]/g, "").trim()).filter((token) => token.length >= 3))].slice(0, 4);
+      const responses = await Promise.all(tokens.map((token) => this.request("search", { q: token, per_page: perPage })));
+      items = [...new Map(responses.flatMap((response) => response.items).map((item) => [`${item.type}:${item.id}`, item])).values()];
+    }
+    return items.map(mapItem).filter((item) => input.types.length === 0 || input.types.includes(item.type)).slice(0, input.limit);
   }
 
   async findServices(input: Parameters<AtlasRepository["findServices"]>[0]): Promise<ServiceRecord[]> {

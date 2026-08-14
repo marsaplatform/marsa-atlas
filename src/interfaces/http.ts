@@ -10,7 +10,9 @@ export function startHttpServer(service: AtlasService, port: number): ReturnType
     async fetch(request) {
       const url = new URL(request.url);
       if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: { "access-control-allow-origin": "*", "access-control-allow-methods": "GET,POST,OPTIONS", "access-control-allow-headers": "content-type,mcp-protocol-version" } });
-      if (url.pathname === "/health") return json({ ok: true, service: "marsa-atlas", version: "0.1.0" });
+      if (["/health", "/healthz", "/readyz"].includes(url.pathname)) {
+        return json({ ok: true, service: "marsa-atlas", version: "0.1.0" });
+      }
       if (url.pathname === "/api/v1/coverage" && request.method === "GET") return json(await service.coverage());
       if (url.pathname === "/api/v1/search" && request.method === "GET") {
         const query = url.searchParams.get("q")?.trim() ?? "";

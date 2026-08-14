@@ -47,7 +47,7 @@ ATLAS_DATA_MODE=wordpress ATLAS_WORDPRESS_URL=https://marsaplatform.com bun run 
 
 ## REST
 
-- `GET /health`
+- `GET /health`, `GET /healthz`, `GET /readyz`
 - `GET /api/v1/coverage`
 - `GET /api/v1/search?q=تعليم`
 - `GET /api/v1/services?need=تعليم&governorate=القاهرة`
@@ -75,7 +75,7 @@ Deploy the repository with its `Dockerfile`, expose port `3000`, and set:
 - `ATLAS_WORDPRESS_URL=https://marsaplatform.com`
 - `ATLAS_PORT=3000`
 
-The health check endpoint is `GET /health`. No WordPress credentials are required for public reads.
+Health probes are available at `GET /health`, `GET /healthz`, and `GET /readyz`. No WordPress credentials are required for public reads.
 
 ## Status
 
